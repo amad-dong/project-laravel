@@ -6,6 +6,7 @@ use App\Http\Request\StoreBookingRequest;
 use App\Http\Request\StoreCheckBookingRequest;
 use App\Http\Request\StorePaymentRequest;
 use App\Models\BookingTransaction;
+use App\Models\Booking;
 use App\Models\Workshop;
 use App\Services\BookingService;
 use Illuminate\Http\Request;
@@ -83,6 +84,6 @@ class BookingController extends Controller
         if ($myBookingDetails) {
             return view('booking.my_booking_details', compact('myBookingDetails'));
         }
-        return redirect()->route('front.check_booking')->withErrors(['error' => 'Transaction not found']);
+        return redirect()->route('booking.create')->with('success', 'Booking berhasil disimpan!');
     }
 }
